@@ -1,0 +1,91 @@
+<section ng-init="initScreen()">
+  <div class="row">
+    <div class="col-md-3" style="display:inline-table">
+      <label for="mass_input">Mass in kilograms</label></br>
+      <div class="col-md-8">
+        <input type="number" id="mass_input" class="form-control" ng-model="input.mass" min="0">
+      </div>
+    </div>
+    <div class="col-md-3" style="display:inline-table">
+      <label for="height_input">Height in meters</label></br>
+      <div class="col-md-8">
+        <input type="number" id="height_input" class="form-control" ng-model="input.height" min="0">
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-4" style="display:inline-table">
+      <button type="button" id="calculate_btn" ng-click="calculateBMI()" class="btn btn-info">Calculate!</button>
+      <button type="button" id="save_btn" ng-click="saveResult()" class="btn btn-success col-sm-offset-1" ng-disabled="disableSave">Save Result!</button>
+      <h3>Your BMI is {{bmi}} </h3>
+      <div class="row">
+        <table class="table">
+          <thead>
+            <th>BMI</th>
+            <th>BMI Category</th>
+            <th>Date</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="info in lastFive">
+              <td>{{info.bmi}}</td>
+              <td>{{info.bmi_class}}</td>
+              <td>{{info.created_at | date:'yyyy-MM-dd'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-4" style="display:inline-table">
+      <table class="table table-condensed">
+        <thead>
+          <th>Category</th>
+          <th>From</th>
+          <th>To</th>
+        </thead>
+        <tbody>
+          <tr ng-class="bmiClass == 1 ? 'danger' : ''">
+            <td>Very severely underweight</td>
+            <td></td>
+            <td>15.0</td>
+          </tr>
+          <tr ng-class="bmiClass == 2 ? 'danger' : ''">
+            <td>Severely underweight</td>
+            <td>15</td>
+            <td>16</td>
+          </tr>
+          <tr ng-class="bmiClass == 3 ? 'warning' : ''">
+            <td>Underweight</td>
+            <td>16</td>
+            <td>18.5</td>
+          </tr>
+          <tr ng-class="bmiClass == 4 ? 'success' : ''">
+            <td>Normal (healthy weight)</td>
+            <td>18.5</td>
+            <td>25</td>
+          </tr>
+          <tr ng-class="bmiClass == 5 ? 'warning' : ''">
+            <td>Overweight</td>
+            <td>25</td>
+            <td>30</td>
+          </tr>
+          <tr ng-class="bmiClass == 6 ? 'danger' : ''">
+            <td>Obese Class I (Moderately obese)</td>
+            <td>30</td>
+            <td>35</td>
+          </tr>
+          <tr ng-class="bmiClass == 7 ? 'danger' : ''">
+            <td>Obese Class II (Severely obese)</td>
+            <td>35</td>
+            <td>40</td>
+          </tr>
+          <tr ng-class="bmiClass == 8 ? 'danger' : ''">
+            <td>Obese Class III (Very severely obese)</td>
+            <td>40</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

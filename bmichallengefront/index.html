@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="bmiApp">
+  <head>
+    <meta charset="utf-8">
+    <title>BMI Challenge</title>
+
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/global.css">
+
+    <script src="libs/jquery/dist/jquery.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-cookie/angular-cookie.js"></script>
+    <script src="libs/ng-token-auth/dist/ng-token-auth.js"></script>
+    <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <script src="js/app.module.js"></script>
+    <script src="js/app.routes.js"></script>
+    <script src="js/loginController.js"></script>
+    <script src="js/registerController.js"></script>
+    <script src="js/homeController.js"></script>
+  </head>
+  <body>
+    <h1>Body Mass Index Challenge</h1>
+    <div ui-view class="container"></div>
+  </body>
+</html>
