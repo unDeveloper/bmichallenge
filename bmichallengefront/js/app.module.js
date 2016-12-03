@@ -46,4 +46,25 @@ bmiApp.run(['$rootScope','$state','$auth',function($rootScope,$state,$auth){
     console.log("login-error");
     $state.go("login");
   });
+
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, from, fromState, fromParams, error){
+    console.log("state change error");
+    if(typeof error!="undefined" && error!=null){
+      if(error.reason=="unauthorized"){
+        // console.log("No autorizado");
+        $state.go('login');
+      }else{
+        console.log("Reason..:"+error.reason);
+      }
+    }
+
+    if(typeof fromParams!="undefined" && fromParams!=null){
+      if(fromParams.reason=="unauthorized"){
+        // console.log("No autorizado");
+        $state.go('login');
+      }else{
+        console.log("Reason..:"+error.reason);
+      }
+    }
+  });  
 }]);

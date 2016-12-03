@@ -1,4 +1,4 @@
-bmiApp.controller('HomeController',['$scope','$http', function($scope, $http){
+bmiApp.controller('HomeController',['$scope','$http','$auth','$state', function($scope, $http,$auth,$state){
   console.log("HomeController");
 
   $scope.calculateBMI = function(){
@@ -27,6 +27,7 @@ bmiApp.controller('HomeController',['$scope','$http', function($scope, $http){
     $scope.bmi = 0;
     $scope.bmiClass = 0;
     $scope.disableSave=true;
+    $scope.useremail = $auth.user.email;
     $scope.input={
       mass: 0,
       height: 0
@@ -59,5 +60,13 @@ bmiApp.controller('HomeController',['$scope','$http', function($scope, $http){
     }, function errorCallback(resp){
 
     });
+  };
+
+  $scope.signOutUser = function(){
+    $auth.signOut().then(function successCallback(resp){
+      $state.go("login");
+    }, function errorCallback(err){
+
+    })
   };
 }]);

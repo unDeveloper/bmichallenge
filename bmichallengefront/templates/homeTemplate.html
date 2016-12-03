@@ -1,5 +1,8 @@
 <section ng-init="initScreen()">
   <div class="row">
+    <h2 style="display:inline-table">{{useremail}}</h2> <a ng-click="signOutUser()" style="display:inline-table">Sign Out</a>
+  </div>
+  <div class="row">
     <div class="col-md-3" style="display:inline-table">
       <label for="mass_input">Mass in kilograms</label></br>
       <div class="col-md-8">
@@ -20,6 +23,7 @@
       <h3>Your BMI is {{bmi}} </h3>
       <div class="row">
         <table class="table">
+          <caption>Last Five</caption>
           <thead>
             <th>BMI</th>
             <th>BMI Category</th>
